@@ -1,4 +1,0 @@
-api-version: v1
-kind: serviceAccount
-metadata:
-  name: traefik-account

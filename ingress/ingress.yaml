@@ -3,10 +3,15 @@ kind: Ingress
 metadata:
   name: whoami-ingress
   annotations:
-    cert-manager.io/issuer: "letsencrypt-staging"
+    cert-manager.io/cluster-issuer: "letsencrypt-staging"
     traefik.ingress.kubernetes.io/router.entrypoints: web
-    traefik.ingress.kubernetes.io/router.tls: true
+
 spec:
+  ingressClassName: whoami-ingress
+  tls:
+  - hosts:
+    - relectronics.ch
+    secretName: supersecret
   rules:
   - host: relectronics.ch
     http:
@@ -18,7 +23,3 @@ spec:
             name: whoami
             port: 
               number: 80
-  tls:
-    - secretName: supersecret
-      hosts:
-      - relectronics.ch

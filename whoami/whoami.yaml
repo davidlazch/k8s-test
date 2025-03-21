@@ -44,8 +44,14 @@ kind: Ingress
 metadata:
   name: whoami-ingress
 spec:
+  ingressClassName: whoami-ingress
+  tls:
+  - hosts:
+    - whoami.relectronics.ch
+    secretName: example-tls
   rules:
-  - http:
+  - host: whoami.relectronics.ch
+    http:
       paths:
       - path: /
         pathType: Prefix

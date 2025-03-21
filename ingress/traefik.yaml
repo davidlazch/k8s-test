@@ -21,7 +21,7 @@ spec:
         - name: traefik
           image: traefik:v3.3
           args:
-            - --entryPoints.websecure.address=:443
+            - --entryPoints.web.address=:443
             - --providers.kubernetesingress
           ports:
             - name: web

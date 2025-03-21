@@ -3,7 +3,7 @@ kind: Ingress
 metadata:
   name: whoami-ingress
   annotations:
-    cert-manager.io/cluster-issuer: "letsencrypt-staging"
+    cert-manager.io/issuer: "letsencrypt-staging"
     traefik.ingress.kubernetes.io/router.entrypoints: web
 
 spec:
@@ -16,8 +16,8 @@ spec:
   - host: relectronics.ch
     http:
       paths:
-      - pathType: Exact
-        path: /whoami
+      - pathType: Prefix
+        path: /
         backend:
           service:
             name: whoami
